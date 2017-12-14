@@ -13,10 +13,15 @@
     <body>
 
     <% String login = (String)session.getAttribute("user_login"); %>
+    <% String personName = (String)session.getAttribute("personName"); %>
+    <% String personAge = (String)session.getAttribute("personAge"); %>
 
     <% if (login == null || "".equals(login)) { %>
         <form action="/login" method="POST">LOGIN<br>
             Login: <input type="text" name="login"><br>
+            <br>
+            Name: <input type="text" name="personName"><br>
+            Age: <input type="text" name="personAge"><br>
             <br>
             <input type="submit" />
         </form>
@@ -46,7 +51,8 @@
     <br>
     Click this link <a href="/display?a=statistic">STATISTIC</a> to see results.
     <br>
-    You are logged in as: <%= login %>. Click this link <a href="/login?a=exit">LOGOUT</a> to logout.
+    You are logged in as: <%= login %> (<%= personName%>, of age <%= personAge%>).
+    Click this link <a href="/login?a=exit">LOGOUT</a> to logout.
     <% } %>
   </body>
 </html>

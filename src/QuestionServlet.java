@@ -14,10 +14,14 @@ public class QuestionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String login = request.getParameter("login");
+        String personName = request.getParameter("personName");
+        String personAge = request.getParameter("personAge");
 
         HttpSession session = request.getSession(true);
         if (login != null ) {
             session.setAttribute("user_login", login);
+            session.setAttribute("personName", personName);
+            session.setAttribute("personAge", personAge);
             response.sendRedirect("index.jsp");
             return;
         }
